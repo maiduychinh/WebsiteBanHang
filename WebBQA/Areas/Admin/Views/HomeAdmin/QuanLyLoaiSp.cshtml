@@ -1,0 +1,67 @@
+﻿@using WebBQA.Models;
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<LoaiSp>
+@using X.PagedList.Web.Common;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "QuanlyLoaiSp";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h1>Danh sách loại sản phẩm</h1>
+<p> 
+    <a asp-action="ThemLoaiSp" class="btn btn-primary">Thêm loại sản phẩm</a>
+</p>
+<p>
+    @TempData["Message"]
+
+</p>
+<table class="table" cols="30" rows="11">
+    <thead>
+        <tr class="table-warning">
+
+            <th>
+                Mã loại sản phẩm
+
+            </th>
+
+            <th>
+                Tên loại sản phẩm
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            string @cls = "table-success";
+        }
+        @foreach (var item in Model)
+        {
+            i = i + 1;
+            cls = "table-success";
+            if (i % 2 == 0)
+            {
+                cls = "table-primary";
+            }
+
+            <tr class="@cls">
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaLoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Loai)
+                </td>
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("QuanLyLoaiSp", new { page = page }))
+</div>
+
+
+

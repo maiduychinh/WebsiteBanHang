@@ -1,0 +1,16 @@
+﻿@model IEnumerable<LoaiSp>
+<div class="col-lg-3">
+    <div class="hero__categories">
+        <div class="hero__categories__all">
+            <i class="fa fa-bars"></i>
+            <span>Danh mục sản phẩm</span>
+        </div>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li><a asp-controller="Home" asp-action="SanPhamTheoLoai" asp-route-maloai="@item.MaLoai">@item.Loai</a></li>
+
+            }
+        </ul>
+    </div>
+</div>

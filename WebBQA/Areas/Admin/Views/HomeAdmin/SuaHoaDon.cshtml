@@ -1,0 +1,44 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebBQA.Models.HoaDonBan
+@{
+    ViewData["Title"] = "SuaHoaDon";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Sửa trạng thái</h1>
+
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="SuaHoaDon">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="MaHoaDon" />
+            <input type="hidden" asp-for="MaKhachHang" />
+            <input type="hidden" asp-for="NgayHoaDon" />
+            <input type="hidden" asp-for="TenNguoiNhan" />
+            <input type="hidden" asp-for="SoDienThoai" />
+            <input type="hidden" asp-for="DiaChi" />
+            <input type="hidden" asp-for="TongTienHd" />
+            <input type="hidden" asp-for="PhuongThucThanhToan" />
+            <input type="hidden" asp-for="GhiChu" />
+
+             <div class="form-group">
+                <label asp-for="MaTrangThai" class="control-label"> Trạng thái</label>
+                <select asp-for="MaTrangThai" class="form-control" asp-items="ViewBag.MaTrangThai"></select>
+                <span asp-validation-for="MaTrangThai" class="text-danger"></span>
+            </div> 
+
+            <div class="form-group">
+                <input type="submit" value="Lưu thay đổi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="QuanLyHoaDon">Trở về</a>
+</div>
+

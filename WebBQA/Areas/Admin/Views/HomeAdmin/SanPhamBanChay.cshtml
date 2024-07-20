@@ -1,0 +1,61 @@
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList;
+@using X.PagedList.Mvc;
+@model IPagedList<dynamic>
+
+@{
+    ViewBag.Title = "Sản phẩm bán chạy nhất";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Sản phẩm bán chạy nhất</h2>
+
+<div class="card-body">
+    <table class="table table-striped">
+        <thead>
+            <tr class ="table-warning">
+                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sản phẩm</font></font></th>
+                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tên sản phẩm</font></font></th>
+                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giá tiền</font></font></th>
+                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Số lượng</font></font></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 0;
+                string @cls = "table-success";
+            }
+            @foreach (var item in Model)
+            {
+
+                i = i + 1;
+                cls = "table-success";
+                if (i % 2 == 0)
+                {
+                    cls = "table-primary";
+                }
+                <tr class="@cls">
+                    <td class="py-1">
+                        <img src="@Url.Content("~/ProductsImages/Images/" + @item.AnhDaiDien)" alt="Ảnh sản phẩm">
+                    </td>
+
+                    <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.TenSp</font></font></td>
+                
+                    <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.GiaSanPham</font></font></td>
+                    <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.TotalQuantitySold</font></font></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<table class="table">
+
+    <tbody>
+     
+    </tbody>
+</table>
+
+<div>
+@*     @Html.PagedListPager(Model, page => Url.Action("SanPhamBanChay", new { page }))
+ *@</div>

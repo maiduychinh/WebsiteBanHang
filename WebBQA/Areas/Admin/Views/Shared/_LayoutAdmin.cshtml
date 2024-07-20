@@ -1,0 +1,101 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../1LayoutAdmin/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../1LayoutAdmin/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../1LayoutAdmin/assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../1LayoutAdmin/assets/images/favicon.ico" />
+</head>
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                    <a asp-controller="Access" asp-action="Logout"><i class="fa fa-user"></i> Đăng xuất</a>
+
+                </button>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item nav-profile dropdown">
+                        <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                            <a class="dropdown-item" href="#">
+                                <i class="mdi mdi-cached me-2 text-success"></i> Activity Log
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                                <i class="mdi mdi-logout me-2 text-primary"></i> Signout
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:../../partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                   
+                  
+                  
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="TaiKhoan" class="btn btn-info mt-2" role="button">Quản lý Tài Khoản</a>
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="DanhMucSanPham" class="btn btn-success mt-2" role="button">Quản lý sản phẩm</a>
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="QuanlyHoaDon" class="btn btn-primary mt-2" role="button">Quản lý trạng thái đơn hàng</a>
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="QuanLyNuoc" class="btn btn-info mt-2" role="button">Quản lý nước sản xuất</a>
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="QuanLyChatLieu" class="btn btn-success mt-2" role="button">Quản lý chất liệu</a>
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="QuanLyLoaiSp" class="btn btn-primary mt-2" role="button">Quản lý lọai sản phẩm</a>
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="QuanLyKichThuoc" class="btn btn-info mt-2" role="button">Quản lý kích thước</a>
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="QuanLyTrangThai" class="btn btn-success mt-2" role="button">Quản lý trạng thái </a>
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="QuanLyHangSx" class="btn btn-primary mt-2 " role="button">Quản lý hãng sản xuất</a>
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="QuanLyMau" class="btn btn-info mt-2" role="button">Quản lý màu sắc</a>
+                    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="SanPhamBanChay" class="btn btn-success mt-2" role="button">Sản phẩm bán chạy</a>
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper ">
+                    @RenderBody()
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:../../partials/_footer.html -->
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../1LayoutAdmin/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../1LayoutAdmin/assets/js/off-canvas.js"></script>
+    <script src="../../1LayoutAdmin/assets/js/hoverable-collapse.js"></script>
+    <script src="../../1LayoutAdmin/assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- End custom js for this page -->
+</body>
+</html>

@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutQA.cshtml";
+}
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<DanhMucSp>
+
+
+
+@foreach(var item in Model)
+{
+        <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+
+            <div class="featured__item">
+                <div class="featured__item__pic set-bg" data-setbg= "@Url.Content("../ProductsImages/Images/"+item.AnhDaiDien)" style="background-image: url(&quot;img/featured/feature-1.jpg&quot;);">
+                    <ul class="featured__item__pic__hover">
+                        <li>
+                        <a
+                             type="button" data-id="@item.MaSp" class="ajax-add-to-cart fa fa-shopping-cart">
+                        </a>
+                         </li>
+                    </ul>
+                </div>
+                <div class="featured__item__text">
+                <h6>
+                    <a asp-controller="Home" 
+                        asp-action="ChiTietSanPham" 
+                        asp-route-maSp="@item.MaSp"
+                    >@item.TenSp</a>
+                </h6>
+                    <h5>@item.GiaSanPham Vnd</h5>
+
+                   
+                </div>
+           
+            </div>
+        </div>
+
+}
+@* <div class="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div> *@
+<div class ="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page=page, keyword = ViewBag.Keyword }))
+</div>
+
+
+
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".ajax-add-to-cart").click(function () {
+                $.ajax({
+                    url: "/Cart/AddToCart",
+                    data: {
+                        id: $(this).data("id"),
+                        SoLuong: 1,
+                        type: "ajax"
+                    },
+                    success: function (data) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thêm giỏ hàng thành công',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        console.log(data.soLuong);
+                        $("#cart_count").html(data.soLuong);
+                    },
+                    error: function () {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Thêm giỏ hàng thất bại',
+                            text: 'Vui lòng thử lại',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}

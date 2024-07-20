@@ -1,0 +1,40 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebBQA.Models.TrangThai
+@{
+    ViewData["Title"] = "ThemTrangThai";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Thêm trạng thái</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="ThemTrangThai">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MaTrangThai" class="control-label">Mã trạng thái</label>
+                <input asp-for="MaTrangThai" class="form-control" />
+                <span asp-validation-for="MaTrangThai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenTrangThai" class="control-label">Tên trạng thái</label>
+                <input asp-for="TenTrangThai" class="form-control" />
+                <span asp-validation-for="TenTrangThai" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="QuanLyTrangThai" class="btn btn-danger">Trở về</a>
+</div>
+

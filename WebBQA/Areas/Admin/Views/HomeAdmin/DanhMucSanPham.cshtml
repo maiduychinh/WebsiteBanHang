@@ -1,0 +1,103 @@
+﻿@using WebBQA.Models;
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<DanhMucSp>
+@using X.PagedList.Web.Common;
+@{
+    ViewData["Title"] = "DanhMucSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h3>Danh mục các sản phẩm</h3>
+
+
+
+
+
+<p>
+    <a asp-action="ThemSanPhamMoi" class="btn btn-primary">Thêm mới</a>
+</p>
+<p>
+    @TempData["Message"]
+</p>
+<table class="table">
+    <thead>
+        <tr class="table-warning">
+            <th>
+                Sản phẩm
+            </th>
+            <th>
+                Tên sản phẩm
+            </th>
+            <th>
+                Giá (Vnđ)
+            </th>
+           
+
+            <th>
+                Hãng
+            </th>
+             <th>
+                Chất liệu
+            </th>
+            <th>
+                Màu sắc
+            </th>
+            <th>
+                Số lượng còn
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            string @cls = "table-success";
+        }
+        @foreach (var item in Model)
+        {
+            i = i + 1;
+            cls = "table-success";
+            if (i % 2 == 0)
+            {
+                cls = "table-primary";
+            }
+
+            <tr class="@cls">
+                <td class="py-1">
+                    <img src="@Url.Content("~/ProductsImages/Images/" + @item.AnhDaiDien)" alt="Ảnh sản phẩm">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSp)
+                </td>
+              
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaSanPham)
+                </td>
+              
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaHangSxNavigation.HangSx1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaChatLieuNavigation.ChatLieu1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaMauSacNavigation.TenMauSac)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Slton)
+                </td>
+                <td>
+
+                    <a class="btn btn-info" asp-action="SuaSanPham" asp-route-maSanPham="@item.MaSp">Sửa</a>
+                    <a class="btn btn-danger" asp-action="XoaSanPham" asp-route-maSanPham="@item.MaSp">Xoá</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("DanhMucSanPham", new { page = page }))
+</div>
+
+
+                    

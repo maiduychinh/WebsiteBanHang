@@ -1,0 +1,102 @@
+﻿@using WebBQA.Models;
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<KhachHang>
+@using X.PagedList.Web.Common;
+@{
+    ViewData["Title"] = "TaiKhoan";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h3>Tài khoản</h3>
+
+<p>
+    @TempData["Message"]
+</p>
+
+
+
+
+
+
+<table class="table">
+    <thead>
+        <tr class="table-warning">
+            <th>
+                Tài khoản
+            </th>
+            <th>
+                Mật khẩu
+            </th>
+
+            <th>
+                Tên khách hàng
+            </th>
+            <th>
+                Ngày sinh
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+           
+            <th>
+                Loại tài khoản
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            string @cls = "table-success";
+        }
+        @foreach (var item in Model)
+        {
+            i = i + 1;
+            cls = "table-success";
+            if (i % 2 == 0)
+            {
+                cls = "table-primary";
+            }
+
+            <tr class="@cls">
+
+                <th>
+                    @Html.DisplayFor(modelItem => item.MaKhachHang)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </th>
+
+                <th>
+                    @Html.DisplayFor(modelItem => item.TenKhachHang)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.SoDienThoai)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </th>
+                
+                <th>
+                    @Html.DisplayFor(modelItem => item.LoaiUserr)
+                </th>
+                <td>
+                    <a class="btn btn-info" asp-action="SuaTaiKhoan" asp-route-ma="@item.MaKhachHang">Sửa</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("TaiKhoan", new { page = page }))
+</div>
+
+

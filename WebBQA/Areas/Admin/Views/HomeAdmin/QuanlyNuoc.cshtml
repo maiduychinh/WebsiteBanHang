@@ -1,0 +1,66 @@
+﻿@using WebBQA.Models;
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<QuocGia>
+@using X.PagedList.Web.Common;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "QuanlyNuoc";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    <h1>Danh sách nước sản xuất sản phẩm</h1>
+}<p>
+    <a asp-action="ThemNuoc" class="btn btn-primary">Thêm nước sản xuất</a>
+</p>
+<p>
+    @TempData["Message"]
+
+</p>
+<table class="table">
+    <thead>
+        <tr class="table-warning">
+
+            <th>
+                Mã nước
+
+            </th>
+
+            <th>
+                Tên nước
+            </th>
+           
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            string @cls = "table-success";
+        }
+        @foreach (var item in Model)
+        {
+            i = i + 1;
+            cls = "table-success";
+            if (i % 2 == 0)
+            {
+                cls = "table-primary";
+            }
+
+            <tr class="@cls">
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaNuocSx)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNuoc)
+                </td>
+                
+
+               
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="product__pagination">
+     @Html.PagedListPager(Model, page => Url.Action("QuanLyNuoc", new { page = page }))
+</div>
+
+
+

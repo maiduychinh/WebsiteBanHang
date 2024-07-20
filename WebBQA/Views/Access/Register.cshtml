@@ -1,0 +1,132 @@
+﻿@model WebBQA.Models.KhachHang
+
+@{
+    ViewData["Title"] = "DangKy";
+    Layout = null;
+}
+@*
+
+
+
+
+*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Purple Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../1LayoutAdmin/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../1LayoutAdmin/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../1LayoutAdmin/assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../1LayoutAdmin/assets/images/favicon.ico" />
+</head>
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth">
+                <div class="row flex-grow">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auth-form-light text-left p-5">
+                            <div  class="brand-logo">
+                                <img src="../1LayoutQA/img/logo3.jpg" class="mx-auto d-block">
+                            </div>
+
+
+
+
+
+                            <form class="pt-3" asp-action="Register">
+                                <div class="form-group">
+
+                                    <h3 color="red">Đăng ký tài khoản</h3>
+                                </div>
+                                <div class="form-group">
+                                    <input  asp-for="MaKhachHang" type="username" class="form-control form-control-lg" placeholder="Tài khoản">
+                                    <span asp-validation-for="MaKhachHang" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="Mật khẩu">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input asp-for="TenKhachHang" type="text" class="form-control form-control-lg" placeholder="Tên khách hàng">
+                                    <span asp-validation-for="TenKhachHang" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input asp-for="NgaySinh" type="date" class="form-control form-control-lg" placeholder="Ngày sinh">
+                                    <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input asp-for="SoDienThoai" type="text" class="form-control form-control-lg" placeholder="Số điện thoại">
+                                    <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input asp-for="DiaChi" type="text" class="form-control form-control-lg" placeholder="Địa chỉ">
+                                    <span asp-validation-for="DiaChi" class="text-danger"></span>
+                                </div>
+
+
+                                <div class="form-group">
+                                    Thêm Ảnh
+                                    <input asp-for="AnhDaiDien" type="file" class="form-control-file" placeholder="Ảnh">
+                                    <span asp-validation-for="AnhDaiDien" class="text-danger"></span>
+                                </div>
+                                
+
+
+
+
+                                <p class="text-warning">
+                                    @TempData["Message"]
+                                </p>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Tạo tài khoản" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" />
+                                </div>
+
+                                <div class="">
+                                    Đã có tài khoản
+                                    <a  asp-action="Login" >Đăng nhập</a>
+                                </div>
+                            </form>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../1LayoutAdmin/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../1LayoutAdmin/assets/js/off-canvas.js"></script>
+    <script src="../../1LayoutAdmin/assets/js/hoverable-collapse.js"></script>
+    <script src="../../1LayoutAdmin/assets/js/misc.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+</body>
+</html>

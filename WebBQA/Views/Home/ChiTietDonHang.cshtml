@@ -1,0 +1,51 @@
+﻿@model WebBQA.Models.HoaDonBan
+@{
+    ViewData["Title"] = "ChiTietDonHang";
+    Layout = "~/Views/Shared/_LayoutQA.cshtml";
+}
+<h1>Chi tiết đơn hàng @Model.MaHoaDon</h1>
+
+<div>
+    <p>Ngày đặt hàng: @Model.NgayHoaDon</p>
+    <p>Khách hàng: @Model.MaKhachHangNavigation.TenKhachHang</p>
+    <p>Tên người nhận: @Model.TenNguoiNhan</p>
+    <p>Địa chỉ: @Model.DiaChi</p>
+    <p>Số điện thoại: @Model.SoDienThoai</p>
+    <p>Phương thức thanh toán: @Model.PhuongThucThanhToan</p>
+    <p>Ghi chú: @Model.GhiChu</p>
+    <p>Tình trạng: @Model.MaTrangThaiNavigation.TenTrangThai</p>
+    <p>Tổng tiền: @Model.TongTienHd</p>
+    <a asp-action="XemDonHang" class="btn btn-danger">Trở về</a>
+</div>
+    
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sản phẩm</th>
+            <th>Tên sản phẩm</th>
+
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var chiTiet in Model.ChiTietHdbs)
+        {
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center mt-2">
+                        <img src="~/ProductsImages/Images/@chiTiet.MaSpNavigation.AnhDaiDien" class="img-fluid rounded-circle" style="width: 90px; height: 90px;" alt="">
+                    </div>
+
+                </td>
+
+
+                <td>@chiTiet.MaSpNavigation.TenSp</td>
+                <td>@chiTiet.SoLuongBan</td>
+                <td>@chiTiet.DonGiaBan Vnd</td>
+            </tr>
+        }
+    </tbody>
+</table>

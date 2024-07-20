@@ -1,0 +1,47 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebBQA.Models.KhachHang
+
+
+@{
+    ViewData["Title"] = "SuaSanPham";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Sửa tài khoản</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+        <form method="post" asp-action="SuaTaiKhoan">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MaKhachHang" />
+            <input type="hidden" asp-for="Password" />
+            <input type="hidden" asp-for="TenKhachHang" />
+            <input type="hidden" asp-for="NgaySinh" />
+            <input type="hidden" asp-for="SoDienThoai" />
+            <input type="hidden" asp-for="DiaChi" />
+            <input type="hidden" asp-for="AnhDaiDien" />
+
+            
+    
+            <div class="form-group">
+                <label asp-for="LoaiUserr"name ="Loại tài khoản"  class="control-label"></label>
+                <input asp-for="LoaiUserr" type="text"class="form-control" />
+                <span asp-validation-for="LoaiUserr" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Lưu thay đổi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-area="admin" asp-controller="HomeAdmin" asp-action="TaiKhoan">>Trở về</a>
+</div>

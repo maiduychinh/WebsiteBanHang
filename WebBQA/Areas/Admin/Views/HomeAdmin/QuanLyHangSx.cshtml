@@ -1,0 +1,71 @@
+﻿@using WebBQA.Models;
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<HangSx>
+@using X.PagedList.Web.Common;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "QuanLyHangSx";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Danh sách hãng sản xuất</h1>
+
+
+
+<p>
+    <a asp-action="ThemHangSx" class="btn btn-primary">Thêm hãng sx</a>
+</p>
+<p>
+    @TempData["Message"]
+
+</p>
+<table class="table">
+    <thead>
+        <tr class="table-warning">
+
+            <th>
+                Mã hãng sản xuất
+
+            </th>
+
+            <th>
+                Hãng sản xuất
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            string @cls = "table-success";
+        }
+        @foreach (var item in Model)
+        {
+            i = i + 1;
+            cls = "table-success";
+            if (i % 2 == 0)
+            {
+                cls = "table-primary";
+            }
+
+            <tr class="@cls">
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaHangSx)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HangSx1)
+                </td>
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("QuanLyHangSx", new { page = page }))
+</div>
+
+
+

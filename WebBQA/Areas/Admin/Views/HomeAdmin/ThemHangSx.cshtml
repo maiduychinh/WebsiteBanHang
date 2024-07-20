@@ -1,0 +1,49 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebBQA.Models.HangSx
+@{
+    ViewData["Title"] = "ThemHangSx";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Thêm hãng sản xuất</h1>
+
+
+
+
+
+
+
+  
+
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="ThemHangSx">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MaHangSx" class="control-label">Mã hãng sản xuất</label>
+                <input asp-for="MaHangSx" class="form-control" />
+                <span asp-validation-for="MaHangSx" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HangSx1" class="control-label">Hãng sản xuất</label>
+                <input asp-for="HangSx1" class="form-control" />
+                <span asp-validation-for="HangSx1" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="QuanLyHangSx" class="btn btn-danger">Trở về</a>
+</div>
+

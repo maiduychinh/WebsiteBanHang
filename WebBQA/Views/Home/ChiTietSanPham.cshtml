@@ -1,0 +1,97 @@
+﻿@model WebBQA.Models.DanhMucSp
+
+@{
+    ViewData["Title"] = "ChiTietSanPham";
+    Layout = "~/Views/Shared/_LayoutQA.cshtml";
+
+}
+
+
+
+<!-- Product Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                             src="@Url.Content("../ProductsImages/Images/" +Model.AnhDaiDien)" alt="">
+                        <div class="product__details__pic__slider owl-carousel">
+                            @foreach (var image in ViewBag.anhSanPham)
+                            {
+                                <img data-imgbigurl="@Url.Content("../ProductsImages/Images/" + image.TenFileAnh)"
+                                     src="@Url.Content("../ProductsImages/Images/" + image.TenFileAnh)" alt="">
+                            }
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3>@Model.TenSp</h3>
+                    <div class="product__details__rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <div class="product__details__price">@Model.GiaSanPham Vnđ</div>
+                    <div>
+                        Mô tả sản phẩm: @Model.GioiThieuSp
+                    </div>
+                    <div>
+                            Chất liệu: @ViewBag.MaChatLieu
+                    </div>
+                  
+                    
+                    <div>
+                        Hãng sản xuất: @ViewBag.MaHangSx
+                    </div>
+
+                    <div>
+                        Nước sản xuất: @ViewBag.MaNuocSx
+                    </div>
+
+                    <div>
+                        Loại sản phẩm: @ViewBag.MaLoaiSp
+                    </div>
+
+                    <div>
+                        Kích thước: @ViewBag.MaKichThuoc
+                    </div>
+
+                    <div>
+                        Màu sắc: @ViewBag.MaMauSac
+                    </div>
+
+                    <div>
+                        Thời gian bảo hành: @Model.ThoiGianBaoHanh tháng.
+                    </div>
+
+
+                </div>
+
+                <form asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.MaSp">
+                    <div class="product__details__quantity">
+                        <div class="quantity">
+                            <div class="pro-qty">
+                                <input type="text" value="1" name="SoLuong">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="primary-btn">
+                        Thêm giỏ hàng
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!-- Product Details Section End -->
